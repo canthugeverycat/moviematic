@@ -1,0 +1,17 @@
+// Global variables
+$black: #313639;
+$white: #fff;
+$baby-blue: #89CFF0;
+$baby-pink: #ffb7ce;
+$grey: rgba(110, 110, 110);
+$light-grey: rgba(180, 180, 180);
+
+$border-radius-default: 4px;
+$border-radius-lg: 8px;
+
+$box-shadow-default: 2px 2px 4px rgba(0,0,0,0.3);
+
+// Functions
+@function gutter($n: 1) {
+    @return $n * 4px;
+}

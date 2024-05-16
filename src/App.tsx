@@ -1,9 +1,13 @@
 import CSSModules from 'react-css-modules';
 import styles from './App.module.scss';
 
+import Title from './components/Title';
+
 const App = () => {
   return (
-    <div styleName="App"></div>
+    <div styleName="App">
+      <Title />
+    </div>
   );
 };
 

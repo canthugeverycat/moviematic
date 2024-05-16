@@ -1,5 +1,6 @@
-asd
-### JavaScript interview task
+![United Cloud Logo](https://united.cloud/UnitedCloud/united_cloud_logo_1_.svg)
+
+# JavaScript interview task
 
 Hello,
 
