@@ -18,10 +18,33 @@ $border-default: 1px solid $light-grey;
 $box-shadow-default: 2px 2px 4px rgba(0,0,0,0.3);
 $box-shadow-purple-glow: 0 0 60px 30px $white, 0 0 100px 60px $pink, 0 0 140px 90px $purple;
 
-$card-width: 200px;
+$card-width: 250px;
 
 // Functions
 $gutter-base: 4px;
 @function gutter($n: 1) {
     @return $n * $gutter-base;
+}
+
+// Animations
+@keyframes favorite {
+    from {
+        opacity: 1;
+        transform: translate(-50%) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%) scale(2);
+    }
+}
+
+@keyframes translate-image-left {
+    from {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: 1000%;
+    }
 }

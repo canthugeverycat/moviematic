@@ -1,6 +1,6 @@
 @import '../../globals.scss';
 
-.container {
+.grid {
     grid-gap: gutter(6);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, $card-width), 1fr));
     justify-items: center;

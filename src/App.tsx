@@ -1,16 +1,15 @@
-import CSSModules from 'react-css-modules';
-import styles from './App.module.scss';
-
 import Title from './components/Title';
 import MovieGrid from './components/MovieGrid';
 
+import './App.scss';
+
 const App = () => {
   return (
-    <div styleName="App">
+    <div className="App">
       <Title />
       <MovieGrid />
     </div>
   );
 };
 
-export default CSSModules(App, styles);
+export default App;

@@ -14,13 +14,3 @@
 
     animation: translate-image-left 200s linear infinite;
 }
-
-@keyframes translate-image-left {
-    from {
-        background-position-x: 0%;
-    }
-
-    100% {
-        background-position-x: 1000%;
-    }
-}

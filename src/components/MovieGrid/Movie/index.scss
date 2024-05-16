@@ -1,0 +1,120 @@
+@import '../../../globals.scss';
+
+@mixin selected-movie {
+    transform: scale(1.05);
+        
+    .movie-info {
+        background: $white;
+    }
+
+    .movie-title {
+        color: $black;
+    }
+
+    .icon-favorite {
+        transform: translate(-50%) scale(1);
+    }
+
+    .icon-favorite--on {
+        opacity: 0;
+    }
+
+    &:before {
+        z-index: -1;
+        position: absolute;
+        top: calc(50% - 10px);
+        left: calc(50% - 10px);
+
+        width: 20px;
+        height: 20px;
+
+        content: "";
+
+        box-shadow: $box-shadow-purple-glow;
+    }
+}
+
+.movie {
+    aspect-ratio: 1;
+    container-type: inline-size;
+	place-content: center;
+	position: relative;
+
+    width: 250px;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: all 0.1s linear;
+
+    &:hover {
+        @include selected-movie;
+    }
+    
+    &:active {
+        transform: scale(1);
+
+        &:before {
+            transform: scale(1.1);
+        }
+
+        .icon-favorite {
+            transform: translate(-50%) scale(0.9);
+        }
+    }
+}
+
+.movie-poster {
+    width: 100%;
+}
+
+.movie-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    padding: gutter(1) gutter(4);
+
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: left;
+}
+
+.movie-title {
+    display: inline-block;
+    margin: 0;
+
+    color: $white;
+
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.movie-release-date {
+    margin: 0;
+
+    color: $grey;
+    
+    font-weight: 400;
+}
+
+.icon-favorite {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    transform: translate(-50%) scale(0);
+}
+
+.movie--selected {
+    @include selected-movie;
+}
+
+.movie--favorite {
+    .icon-favorite.icon-favorite--on {
+        opacity: 1;
+    }
+    .icon-favorite.icon-favorite--off {
+        animation: favorite 0.2s forwards;
+    }
+}

@@ -12,10 +12,10 @@ The task is to implement following requirements:
 
 [ ] Filter duplicated movies from the response  
 [ ] Sort movies by imdb rating  
-[ ] Render all filtered & sorted movies in grid view  
-[ ] Each rendered movie item should display title, poster, release date and inFavorites status  
-[ ] Enable keyboard navigation  
-[ ] Highlight selected item  
+[x] Render all filtered & sorted movies in grid view  
+[x] Each rendered movie item should display title, poster, release date and inFavorites status  
+[x] Enable keyboard navigation  
+[x] Highlight selected item  
 [ ] On Enter key add item to favorites / or remove when it is already in favorites
 
 Following hints can be useful:

@@ -1,6 +1,5 @@
-import CSSModules from 'react-css-modules';
-import style from './index.module.scss';
+import './index.scss';
 
-const Title = () => <h1 styleName="title">MOVIEMATIC</h1>;
+const Title = () => <h1 className="title">MOVIEMATIC</h1>;
 
-export default CSSModules(Title, style);
+export default Title;

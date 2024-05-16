@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import CSSModules from 'react-css-modules';
-import styles from './index.module.scss';
-
 import App from './App';
-
 import reportWebVitals from './reportWebVitals';
+
+import './index.scss';
 
 const RootComponent = () => {
   return (
@@ -16,13 +14,11 @@ const RootComponent = () => {
   );
 };
 
-const ConnectedRootComponent = CSSModules(RootComponent, styles);
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(<ConnectedRootComponent />);
+root.render(<RootComponent />);
 
 reportWebVitals();
