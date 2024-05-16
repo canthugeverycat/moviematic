@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+asd
+### JavaScript interview task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hello,
 
-## Available Scripts
+Congratulations! Your application for JavaScript position has got our attention. Now, it’s time for coding. We want to see your style.
 
-In the project directory, you can run:
+We want you to build simple **web application that displays movies in grid view**.
 
-### `npm start`
+The task is to implement following requirements:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[ ] Filter duplicated movies from the response  
+[ ] Sort movies by imdb rating  
+[ ] Render all filtered & sorted movies in grid view  
+[ ] Each rendered movie item should display title, poster, release date and inFavorites status  
+[ ] Enable keyboard navigation  
+[ ] Highlight selected item  
+[ ] On Enter key add item to favorites / or remove when it is already in favorites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Following hints can be useful:
 
-### `npm test`
+• You can use movies.json for response  
+• To get poster use **base_url**, a **file_size** and a poster_path (example
+*https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg*)  
+• You should also set you screen size to 1280x720 via Chrome dev tools to see the proper UI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You must use JavaScript (Vanilla JS, Vue.js, React or any other framework you prefer). The outcome should be runnable locally and it should work in common browsers.
 
-### `npm run build`
+We understand that your time is precious and would not want you to spend more than *5 hours* working on the task over the span of one week. It is all right that assignment is not
+completed. Try to prioritize what is more important to you.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here are some tips for you what to take care about:
+• Performance  
+• Code readability  
+• Design - we are not looking for pixel-perfect design, but we love attention to details  
+• Commit often, write useful commit messages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+After you send us the task, we will carefully review it in a timely manner and might then invite you to an interview, where we can discuss your solution and explore what could be done
+differently.
