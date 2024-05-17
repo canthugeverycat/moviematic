@@ -5,7 +5,7 @@ import {
     FAVORITE_MOVIE,
 } from './action-types';
 
-import { MovieType } from '../../utils/global-types';
+import { MovieType } from '../../globals/types';
 import { MoviesActionType } from './actions';
 
 import data from '../../movies.json';

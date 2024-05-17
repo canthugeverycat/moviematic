@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useResizeObserver from 'use-resize-observer';
 
-import { getNumberOfColumns } from '../../utils/functions';
+import { getNumberOfColumns } from '../../globals/functions';
 import { RootStateType } from '../../store/rootReducer';
 
 import './index.scss';
@@ -27,6 +27,8 @@ const MovieGrid = (): React.ReactElement => {
 
     // Refs
     const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>(); // Tracks and updates window resizing in a react-friendly way
+
+    const handleFavoriteMovie = (id: number) => dispatch(favoriteMovie(id));
 
     /**
      * Handles keyboard navigation through the grid
@@ -52,7 +54,7 @@ const MovieGrid = (): React.ReactElement => {
                 break;
             case 'Enter': {
                 if (selected > -1) {
-                    dispatch(favoriteMovie(movies[selected].id));
+                    handleFavoriteMovie(movies[selected].id)
                 }
                 break;
             }
@@ -89,6 +91,7 @@ const MovieGrid = (): React.ReactElement => {
                     data={movie}
                     isSelected={selected === i}
                     isFavorite={favorites.includes(movie.id)}
+                    onClick={handleFavoriteMovie}
                 />
             ))}
         </div>

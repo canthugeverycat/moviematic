@@ -5,7 +5,7 @@ import {
     FAVORITE_MOVIE,
 } from './action-types';
 
-import { MovieType } from '../../utils/global-types';
+import { MovieType } from '../../globals/types';
 
 // FETCH_MOVIES
 type FetchMoviesActionType = {

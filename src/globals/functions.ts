@@ -1,4 +1,4 @@
-import { CARD_WIDTH, MONTHS, POSTER_BASE_URL, POSTER_WIDTH } from './consts';
+import { CARD_WIDTH, MONTHS, POSTER_BASE_URL, POSTER_WIDTH } from './const';
 
 /**
  * Get a full movie poster url

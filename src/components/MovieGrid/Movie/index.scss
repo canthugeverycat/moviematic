@@ -1,4 +1,4 @@
-@import '../../../globals.scss';
+@import '../../../globals/base.scss';
 
 // Mixing for when movie card is selected or hovered
 @mixin selected-movie {
@@ -118,5 +118,17 @@
     }
     .icon-favorite.icon-favorite--off {
         animation: favorite 0.2s forwards;
+    }
+}
+
+.movie--favorite-animate {
+    transform: scale(1);
+
+    &:before {
+        transform: scale(1.1);
+    }
+
+    .icon-favorite {
+        transform: translate(-50%) scale(0.9);
     }
 }
