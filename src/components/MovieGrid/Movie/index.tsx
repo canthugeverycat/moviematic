@@ -19,11 +19,10 @@ type MovieProps = {
 
 /**
  * A component for displaying a grid card with movie information
- * 
  * @param {Object} props
  * @param {MovieType} props.data Movie data
- * @param {boolean} props.isSelected If this movie is currently selected
- * @param {boolean} props.isFavorite If this movie is favorited
+ * @param {boolean} props.isSelected Is this movie selected
+ * @param {boolean} props.isFavorite Is this movie favorited
  * @returns {React.ReactElement}
  */
 const Movie = ({

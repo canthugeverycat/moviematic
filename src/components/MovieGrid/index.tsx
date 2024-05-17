@@ -12,22 +12,23 @@ import { favoriteMovie } from '../../store/movies/actions';
 /**
  * A parent grid container used for rendering the cards.
  * The main app logic is stored here.
- * 
  * @returns {React.ReactElement}
  */
 const MovieGrid = (): React.ReactElement => {
-    // Store
     const movies = useSelector((store:RootStateType) => store.movies.data);
     const favorites = useSelector((store:RootStateType) => store.movies.favorites);
     const dispatch = useDispatch();
 
-    // State
     const [ selected, setSelected ] = useState(-1);
     const [ columnsCount, setColumnsCount ] = useState<number>(getNumberOfColumns());
 
-    // Refs
     const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>(); // Tracks and updates window resizing in a react-friendly way
 
+    /**
+     * A common handler that will fire both on Enter key and on a click
+     * 
+     * @param {string} id Movie id
+     */
     const handleFavoriteMovie = (id: number) => dispatch(favoriteMovie(id));
 
     /**
@@ -68,14 +69,11 @@ const MovieGrid = (): React.ReactElement => {
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
 
-        return () => {
-            // Clean up event listener on unmount
-            window.removeEventListener('keydown', handleKeyDown);
-        }
+        return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleKeyDown]);
 
-    // Since we can have a dynamic number of rows and columns
-    // we track the viewport change and update the state
+    // Track the window change and update columns
+    // (this is used to help navigate ↑ and ↓)
     useEffect(() => {
         if (width !== undefined) {
             const count = getNumberOfColumns();
