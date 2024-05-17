@@ -8,8 +8,6 @@ import {
 import { MovieType } from '../../globals/types';
 import { MoviesActionType } from './actions';
 
-import data from '../../movies.json';
-
 export type StateType = {
     data: MovieType[],
     favorites: number[],
@@ -18,7 +16,7 @@ export type StateType = {
 };
 
 const initialState: StateType = {
-    data: data.slice(0, 30),
+    data: [],
     favorites: [],
     isFetching: false,
     error: null,

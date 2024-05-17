@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "json-server --watch ./src/mocks/db.json --port 3001 & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -51,6 +51,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "css-loader": "^7.1.1",
+    "json-server": "^1.0.0-beta.0",
     "node-sass": "^7.0.3",
     "sass-loader": "^14.2.1"
   }
