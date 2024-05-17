@@ -1,4 +1,4 @@
-// Global variables
+// Colors
 $black: #313639;
 $jet-black: black;
 $white: #fff;
@@ -10,14 +10,17 @@ $grey: rgba(110, 110, 110);
 $light-grey: rgba(180, 180, 180);
 $gold: #ffcf40;
 
+// Borders
 $border-radius-default: 4px;
 $border-radius-lg: 8px;
 
 $border-default: 1px solid $light-grey;
 
+// Effects
 $box-shadow-default: 2px 2px 4px rgba(0,0,0,0.3);
 $box-shadow-purple-glow: 0 0 60px 30px $white, 0 0 100px 60px $pink, 0 0 140px 90px $purple;
 
+// Misc
 $card-width: 250px;
 
 // Functions

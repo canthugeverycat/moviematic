@@ -1,18 +1,38 @@
 import Movie from './Movie';
-import { useCallback, useEffect, useRef, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import useResizeObserver from 'use-resize-observer';
-import { MovieType } from '../../utils/global-types';
+
 import { getNumberOfColumns } from '../../utils/functions';
-import data from '../../movies.json';
+import { RootStateType } from '../../store/rootReducer';
 
 import './index.scss';
+import { favoriteMovie } from '../../store/movies/actions';
 
-const MovieGrid = () => {
-    const [ movies, setMovies ] = useState<MovieType[]>([...data.slice(0, 20)]);
+/**
+ * A parent grid container used for rendering the cards.
+ * The main app logic is stored here.
+ * 
+ * @returns {React.ReactElement}
+ */
+const MovieGrid = (): React.ReactElement => {
+    // Store
+    const movies = useSelector((store:RootStateType) => store.movies.data);
+    const favorites = useSelector((store:RootStateType) => store.movies.favorites);
+    const dispatch = useDispatch();
+
+    // State
     const [ selected, setSelected ] = useState(-1);
-    const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>();
     const [ columnsCount, setColumnsCount ] = useState<number>(getNumberOfColumns());
 
+    // Refs
+    const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>(); // Tracks and updates window resizing in a react-friendly way
+
+    /**
+     * Handles keyboard navigation through the grid
+     * 
+     * @param {KeyboardEvent} e
+     */
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         e.preventDefault();
         let val = selected;
@@ -30,6 +50,12 @@ const MovieGrid = () => {
             case 'ArrowUp':
                 val = Math.max(selected - columnsCount, 0);
                 break;
+            case 'Enter': {
+                if (selected > -1) {
+                    dispatch(favoriteMovie(movies[selected].id));
+                }
+                break;
+            }
             default:
                 return;
         }
@@ -41,10 +67,13 @@ const MovieGrid = () => {
         window.addEventListener('keydown', handleKeyDown);
 
         return () => {
+            // Clean up event listener on unmount
             window.removeEventListener('keydown', handleKeyDown);
         }
     }, [handleKeyDown]);
 
+    // Since we can have a dynamic number of rows and columns
+    // we track the viewport change and update the state
     useEffect(() => {
         if (width !== undefined) {
             const count = getNumberOfColumns();
@@ -54,7 +83,14 @@ const MovieGrid = () => {
 
     return (
         <div className="grid" ref={gridRef}>
-            {movies.map((movie, i) => <Movie key={i} data={movie} isSelected={selected === i} />)}
+            {movies.map((movie, i) => (
+                <Movie
+                    key={i}
+                    data={movie}
+                    isSelected={selected === i}
+                    isFavorite={favorites.includes(movie.id)}
+                />
+            ))}
         </div>
     );
 };

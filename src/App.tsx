@@ -3,7 +3,12 @@ import MovieGrid from './components/MovieGrid';
 
 import './App.scss';
 
-const App = () => {
+/**
+ * Main container for the app
+ * 
+ * @returns {React.ReactElement}
+ */
+const App = (): React.ReactElement => {
   return (
     <div className="App">
       <Title />

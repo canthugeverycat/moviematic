@@ -1,5 +1,6 @@
 @import '../../../globals.scss';
 
+// Mixing for when movie card is selected or hovered
 @mixin selected-movie {
     transform: scale(1.05);
         
@@ -51,6 +52,7 @@
         @include selected-movie;
     }
     
+    // We're using this to add a visual response when clicking the card
     &:active {
         transform: scale(1);
 
