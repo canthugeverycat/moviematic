@@ -1,7 +1,7 @@
 @import '../../../globals/base.scss';
 
-// Mixing for when movie card is selected or hovered
-@mixin selected-movie {
+// Mixin for when movie card is selected or hovered
+@mixin movie-card-selected {
     transform: scale(1.05);
         
     .movie-info {
@@ -35,13 +35,26 @@
     }
 }
 
+// Mixin for when movie card is added to favorites
+@mixin movie-card-animated {
+    transform: scale(1);
+
+    &:before {
+        transform: scale(1.1);
+    }
+
+    .icon-favorite {
+        transform: translate(-50%) scale(0.9);
+    }
+}
+
 .movie {
     aspect-ratio: 1;
     container-type: inline-size;
 	place-content: center;
 	position: relative;
 
-    width: 250px;
+    width: $card-width;
 
     cursor: pointer;
     user-select: none;
@@ -49,21 +62,29 @@
     transition: all 0.1s linear;
 
     &:hover {
-        @include selected-movie;
+        @include movie-card-selected;
     }
-    
-    // We're using this to add a visual response when clicking the card
+
     &:active {
-        transform: scale(1);
-
-        &:before {
-            transform: scale(1.1);
-        }
-
-        .icon-favorite {
-            transform: translate(-50%) scale(0.9);
-        }
+        @include movie-card-animated;
     }
+}
+
+.movie--selected {
+    @include movie-card-selected;
+}
+
+.movie--favorite {
+    .icon-favorite.icon-favorite--on {
+        opacity: 1;
+    }
+    .icon-favorite.icon-favorite--off {
+        animation: favorite 0.2s forwards;
+    }
+}
+
+.movie--favorite-animate {
+    @include movie-card-animated;
 }
 
 .movie-poster {
@@ -106,29 +127,4 @@
     left: 50%;
 
     transform: translate(-50%) scale(0);
-}
-
-.movie--selected {
-    @include selected-movie;
-}
-
-.movie--favorite {
-    .icon-favorite.icon-favorite--on {
-        opacity: 1;
-    }
-    .icon-favorite.icon-favorite--off {
-        animation: favorite 0.2s forwards;
-    }
-}
-
-.movie--favorite-animate {
-    transform: scale(1);
-
-    &:before {
-        transform: scale(1.1);
-    }
-
-    .icon-favorite {
-        transform: translate(-50%) scale(0.9);
-    }
 }

@@ -7,7 +7,13 @@ import { getNumberOfColumns } from '../../globals/functions';
 import { RootStateType } from '../../store/rootReducer';
 
 import './index.scss';
-import { favoriteMovie } from '../../store/movies/actions';
+import {
+    fetchMovies,
+    fetchMoviesSuccess,
+    fetchMoviesFailure,
+    favoriteMovie
+} from '../../store/movies/actions';
+import { fetchMovies as apiFetchMovies } from '../../globals/http';
 
 /**
  * A parent grid container used for rendering the cards.
@@ -25,15 +31,13 @@ const MovieGrid = (): React.ReactElement => {
     const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>(); // Tracks and updates window resizing in a react-friendly way
 
     /**
-     * A common handler that will fire both on Enter key and on a click
-     * 
+     * A handler that will fire both on Enter key and on a click
      * @param {string} id Movie id
      */
     const handleFavoriteMovie = (id: number) => dispatch(favoriteMovie(id));
 
     /**
      * Handles keyboard navigation through the grid
-     * 
      * @param {KeyboardEvent} e
      */
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -66,20 +70,42 @@ const MovieGrid = (): React.ReactElement => {
         setSelected(val);
     }, [movies, selected, columnsCount]);
 
+    // Fetch data from the API
+    const getData = async () => {
+        try {
+            dispatch(fetchMovies());
+            const data = await apiFetchMovies();
+            dispatch(fetchMoviesSuccess(data));
+        } catch (e) {
+            console.log(e);
+            dispatch(fetchMoviesFailure('Error'));
+        }
+    };
+    
+    useEffect(() => {
+        getData();
+    }, []);
+
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
 
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleKeyDown]);
 
-    // Track the window change and update columns
-    // (this is used to help navigate ↑ and ↓)
+    // Track the window change and update columns (this is used to help navigate ↑ and ↓)
     useEffect(() => {
         if (width !== undefined) {
             const count = getNumberOfColumns();
             setColumnsCount(count);
         }
     }, [width]);
+
+    // Get data from the API
+    useEffect(() => {
+        const getData = async () => {
+
+        }
+    }, []);
 
     return (
         <div className="grid" ref={gridRef}>

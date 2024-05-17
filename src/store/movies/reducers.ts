@@ -7,6 +7,7 @@ import {
 
 import { MovieType } from '../../globals/types';
 import { MoviesActionType } from './actions';
+import { removeDuplicates, sortMoviesByRating } from '../../globals/functions';
 
 export type StateType = {
     data: MovieType[],
@@ -29,7 +30,10 @@ export const moviesReducer = (state: StateType = initialState, action: MoviesAct
         case FETCH_MOVIES_SUCCESS: {
             const { data } = action.payload;
 
-            return { ...state, data, isFetching: false };
+            const filtered = removeDuplicates(data);
+            const sorted = sortMoviesByRating(filtered);
+
+            return { ...state, data: sorted, isFetching: false };
         }
         case FETCH_MOVIES_FAILURE: {
             const { error } = action.payload;

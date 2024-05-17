@@ -1,6 +1,8 @@
 import Title from './components/Title';
 import MovieGrid from './components/MovieGrid';
 
+import './App.scss';
+
 /**
  * Main container for the app
  * 
