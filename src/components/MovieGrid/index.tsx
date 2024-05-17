@@ -11,7 +11,7 @@ import {
     fetchMovies,
     fetchMoviesSuccess,
     fetchMoviesFailure,
-    favoriteMovie
+    favoriteMovie,
 } from '../../store/movies/actions';
 import { fetchMovies as apiFetchMovies } from '../../globals/http';
 
@@ -26,7 +26,7 @@ const MovieGrid = (): React.ReactElement => {
     const dispatch = useDispatch();
 
     const [ selected, setSelected ] = useState(-1);
-    const [ columnsCount, setColumnsCount ] = useState<number>(getNumberOfColumns());
+    const [ columnCount, setColumnCount ] = useState<number>(getNumberOfColumns());
 
     const { ref: gridRef, width } = useResizeObserver<HTMLDivElement>(); // Tracks and updates window resizing in a react-friendly way
 
@@ -52,10 +52,10 @@ const MovieGrid = (): React.ReactElement => {
                 val = Math.min(selected + 1, movies.length - 1);
                 break;
             case 'ArrowDown':
-                val = Math.min(selected + columnsCount, movies.length - 1);
+                val = Math.min(selected + columnCount, movies.length - 1);
                 break;
             case 'ArrowUp':
-                val = Math.max(selected - columnsCount, 0);
+                val = Math.max(selected - columnCount, 0);
                 break;
             case 'Enter': {
                 if (selected > -1) {
@@ -68,7 +68,7 @@ const MovieGrid = (): React.ReactElement => {
         }
 
         setSelected(val);
-    }, [movies, selected, columnsCount]);
+    }, [movies, selected, columnCount]);
 
     // Fetch data from the API
     const getData = async () => {
@@ -96,16 +96,9 @@ const MovieGrid = (): React.ReactElement => {
     useEffect(() => {
         if (width !== undefined) {
             const count = getNumberOfColumns();
-            setColumnsCount(count);
+            setColumnCount(count);
         }
     }, [width]);
-
-    // Get data from the API
-    useEffect(() => {
-        const getData = async () => {
-
-        }
-    }, []);
 
     return (
         <div className="grid" ref={gridRef}>

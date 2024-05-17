@@ -49,12 +49,10 @@
 }
 
 .movie {
-    aspect-ratio: 1;
-    container-type: inline-size;
-	place-content: center;
 	position: relative;
 
     width: $card-width;
+    height: $card-height;
 
     cursor: pointer;
     user-select: none;
@@ -89,6 +87,8 @@
 
 .movie-poster {
     width: 100%;
+    height: 100%;
+    background-size: cover;
 }
 
 .movie-info {

@@ -61,7 +61,12 @@ const Movie = ({
             })}
             onClick={() => onClick(id)}
         >
-            <img src={getPoster(poster_path)} alt={title} className="movie-poster" />
+            <div
+                style={{
+                    backgroundImage: `url(${getPoster(poster_path)})`,
+                }}
+                className="movie-poster"
+            />
     
             <IoIosStar className="icon-favorite icon-favorite--on" color="#ffcf40" size={50} />
             <IoIosStarOutline className="icon-favorite icon-favorite--off" color="white" size={50} />
