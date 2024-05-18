@@ -32,7 +32,7 @@ export const getHumanReadableDate = (date?: string): string => {
  * @return  {number}
  */
 export const getNumberOfColumns = (): number => {
-    const availableWidth = window.innerWidth * 0.75; // Grid is 75% of the window width
+    const availableWidth = window.innerWidth - 2 * 60; // 2 * 60 is for left and right padding
     const count = Math.floor(availableWidth / CARD_WIDTH);
 
     return count > 0 ? count : 1;

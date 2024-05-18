@@ -1,6 +1,8 @@
 ![United Cloud Logo](https://united.cloud/UnitedCloud/united_cloud_logo_1_.svg)
 
-# JavaScript interview task
+# !Run the project with 'npm start'
+
+## JavaScript interview task
 
 Hello,
 
@@ -36,5 +38,4 @@ Here are some tips for you what to take care about:
 • Design - we are not looking for pixel-perfect design, but we love attention to details  
 • Commit often, write useful commit messages
 
-After you send us the task, we will carefully review it in a timely manner and might then invite you to an interview, where we can discuss your solution and explore what could be done
-differently.
+After you send us the task, we will carefully review it in a timely manner and might then invite you to an interview, where we can discuss your solution and explore what could be done differently.
