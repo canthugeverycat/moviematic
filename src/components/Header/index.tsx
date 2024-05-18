@@ -30,7 +30,7 @@ const Header = (): React.ReactElement => (
         to navigate and
         <Key type="enter" />
         to favorite a movie. Or just use your
-        <BsFillMouseFill size={14} color="white" />
+        <BsFillMouseFill size={14} color="#B4B4B4" />
         .
     </div>
 );
