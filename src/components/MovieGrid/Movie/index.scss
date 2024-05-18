@@ -2,8 +2,8 @@
 
 // Mixin for when movie card is selected or hovered
 @mixin movie-card-selected {
-    transform: scale(1.05);
     z-index: 2;
+    transform: scale(1.05);
         
     .movie-info {
         background: $white;

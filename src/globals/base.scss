@@ -1,6 +1,7 @@
 // Colors
 $black: #313639;
 $jet-black: black;
+$dark-teal: #10191f;
 $white: #fff;
 $purple: #924DBF;
 $purple2: #9E72C3;
@@ -19,6 +20,7 @@ $border-default: 1px solid $light-grey;
 // Effects
 $box-shadow-default: 2px 2px 4px rgba(0,0,0,0.3);
 $box-shadow-purple-glow: 0 0 60px 30px $white, 0 0 100px 60px $pink, 0 0 140px 90px $purple;
+$box-shadow-pink-glow: 0 0 60px 30px $white, 0 0 100px 60px $mint, 0 0 140px 90px $pink;
 
 // Misc
 $card-width: 250px;
@@ -50,5 +52,45 @@ $gutter-base: 4px;
 
     100% {
         background-position-x: 1000%;
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scaleX(1);
+    }
+
+    25% {
+        transform: scaleX(1.05);
+    }
+
+    40% {
+        transform: scaleX(0.95);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    25% {
+        transform: scaleX(-1);
+        opacity: 1;
+    }
+
+    40% {
+        transform: scaleX(0);
+        opacity: 0.95;
+    }
+
+    to {
+        transform: scaleX(0);
+        opacity: 0;
     }
 }

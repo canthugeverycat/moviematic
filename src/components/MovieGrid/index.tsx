@@ -1,4 +1,3 @@
-import Movie from './Movie';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useResizeObserver from 'use-resize-observer';
@@ -18,6 +17,9 @@ import { fetchMovies as apiFetchMovies } from '../../globals/http';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CARD_HEIGHT, MOVIES_PER_PAGE } from '../../globals/const';
 
+import Movie from './Movie';
+import Loader from './Loader';
+
 /**
  * A parent grid container used for rendering the cards.
  * The main app logic is stored here.
@@ -26,6 +28,7 @@ import { CARD_HEIGHT, MOVIES_PER_PAGE } from '../../globals/const';
 const MovieGrid = (): React.ReactElement => {
     const movies = useSelector((store:RootStateType) => store.movies.data);
     const favorites = useSelector((store:RootStateType) => store.movies.favorites);
+    const isFetching = useSelector((store:RootStateType) => store.movies.isFetching);
     const dispatch = useDispatch();
     
     const [ visibleMovies, setVisibleMovies ] = useState(movies.slice(0, MOVIES_PER_PAGE));
@@ -134,6 +137,10 @@ const MovieGrid = (): React.ReactElement => {
         });
     }, [height]);
 
+    if (isFetching) {
+        return <Loader />
+    }
+
     return (
         <div id="grid" className="grid" ref={gridRef} style={{height: height}}>
             <InfiniteScroll
@@ -153,7 +160,9 @@ const MovieGrid = (): React.ReactElement => {
                         onClick={handleFavoriteMovie}
                     />
                 ))}
-                <p className="grid-end">Oh... I'm sorry... Is {movies.length} movies not enough for you ?</p>
+                {visibleMovies.length ? (
+                    <p className="grid-end">Oh... I'm sorry... Is {movies.length} movies not enough for you ?</p>
+                ): null}
             </InfiniteScroll>
         </div>
     );

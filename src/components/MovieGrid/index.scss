@@ -2,26 +2,29 @@
 
 .grid {
     flex: 1;
-    overflow: scroll;
-
     width: calc(75%);
     margin-right: auto;
     margin-left: auto;
+
+    border-top: $border-default;
     
-	border-top: $border-default;
+	overflow: scroll;
 }
 
 .grid-scroll {
-    padding-top: gutter(6);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, $card-width), 1fr));
     justify-items: center;
+
     display: grid;
+    padding-top: gutter(6);
 }
 
 .grid-end {
-    display: block;
-    font-family: 'Bebas Neue';
-    color: $light-grey;
     grid-column: 1 / -1;
+    
+    display: block;
     margin-bottom: gutter(10);
+
+    color: $light-grey;
+    font-family: 'Bebas Neue';
 }
