@@ -9,11 +9,19 @@ const Loader = (): React.ReactElement => {
     const cards = [...Array(10).keys()];
 
     return (
-        <div className="grid">
+        <div data-testid="loader" className="grid">
             <div className="grid-scroll">
                 {cards.map((i) => (
-                    <div key={i} className="loader-card" style={{ animationDelay: `${i * delay}s` }}>
-                        <div className="loader-card-glow" style={{ animationDelay: `${i * delay}s` }} />
+                    <div
+                        key={i}
+                        className="loader-card"
+                        role="presentation"
+                        style={{ animationDelay: `${i * delay}s` }}
+                    >
+                        <div
+                            className="loader-card-glow"
+                            style={{ animationDelay: `${i * delay}s` }}
+                        />
                     </div>
                 ))}
             </div>

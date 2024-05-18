@@ -1,24 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useResizeObserver from 'use-resize-observer';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { getNumberOfColumns } from '../../globals/functions';
-import { RootStateType } from '../../store/rootReducer';
+import { fetchMovies as apiFetchMovies } from '../../globals/http';
+import { CARD_HEIGHT, MOVIES_PER_PAGE } from '../../globals/const';
 
-import './index.scss';
+import { RootStateType } from '../../store/rootReducer';
 import {
     fetchMovies,
     fetchMoviesSuccess,
     fetchMoviesFailure,
     favoriteMovie,
 } from '../../store/movies/actions';
-import { fetchMovies as apiFetchMovies } from '../../globals/http';
-
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { CARD_HEIGHT, MOVIES_PER_PAGE } from '../../globals/const';
 
 import Movie from './Movie';
 import Loader from './Loader';
+
+import './index.scss';
 
 /**
  * A parent grid container used for rendering the cards.
@@ -87,7 +87,31 @@ const MovieGrid = (): React.ReactElement => {
         setSelected(val);
     }, [movies, selected, columnCount]);
 
-    // Fetch data from the API
+    /**
+     * Loads the next batch of movies
+     */
+    const loadMoreMovies = () => {
+        const nextLimit = Math.min(visibleMovies.length + MOVIES_PER_PAGE, movies.length);
+        setVisibleMovies(movies.slice(0, nextLimit));
+    };
+
+    /**
+     * Scrolls grid to the provided row
+     * @param {number} rowNumber Number of row starting with 1
+     */
+    const scrollToRow = useCallback((rowNumber: number) => {
+        const i = rowNumber - 1;
+        const val = i * (CARD_HEIGHT + 24) - ((height || 0) - CARD_HEIGHT - 24)/2;
+
+        gridRef.current?.scrollTo({
+            top: val,
+            behavior: 'smooth',
+        });
+    }, [height]);
+
+    /**
+     * Fetch movies from the API and place them in store
+     */
     const getData = async () => {
         try {
             dispatch(fetchMovies());
@@ -116,34 +140,16 @@ const MovieGrid = (): React.ReactElement => {
         }
     }, [width]);
 
-    /**
-     * Loads the next batch of movies
-     */
-    const loadMoreMovies = () => {
-        const nextLimit = Math.min(visibleMovies.length + MOVIES_PER_PAGE, movies.length);
-        setVisibleMovies(movies.slice(0, nextLimit));
-    };
-
     useEffect(() => {
         setVisibleMovies(movies.slice(0, MOVIES_PER_PAGE));
     }, [movies.length]);
-
-    const scrollToRow = useCallback((rowNumber: number) => {
-        const i = rowNumber - 1;
-        const val = i * (CARD_HEIGHT + 24) - ((height || 0) - CARD_HEIGHT - 24)/2;
-
-        gridRef.current?.scrollTo({
-            top: val,
-            behavior: 'smooth',
-        });
-    }, [height]);
 
     if (isFetching) {
         return <Loader />
     }
 
     return (
-        <div id="grid" className="grid" ref={gridRef} style={{height: height}}>
+        <div id="grid" className="grid" role="grid" ref={gridRef} style={{height: height}}>
             <InfiniteScroll
                 dataLength={visibleMovies.length}
                 next={loadMoreMovies}
@@ -163,7 +169,10 @@ const MovieGrid = (): React.ReactElement => {
                 ))}
 
                 {hasError ? (
-                    <p className="grid-end">Whoops! Something went wrong when we tried to get your our list of movies. Please <span onClick={getData}>try again</span>.</p>
+                    <p className="grid-end">
+                        Whoops! Something went wrong when we tried to get your our list of movies. Please
+                        <span onClick={getData}> try again</span>.
+                    </p>
                 ) : null}
 
                 {visibleMovies.length ? (

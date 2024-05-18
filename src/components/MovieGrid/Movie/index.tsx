@@ -1,11 +1,9 @@
-
-import { IoIosStar, IoIosStarOutline } from 'react-icons/io';
-
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { IoIosStar, IoIosStarOutline } from 'react-icons/io';
 
 import { MovieType } from '../../../globals/types';
 import { getHumanReadableDate, getPoster } from '../../../globals/functions';
-import React, { useEffect, useState } from 'react';
 import { FAVORITE_ANIMATION_DURATION_MS } from '../../../globals/const';
 
 import './index.scss';
@@ -54,6 +52,7 @@ const Movie = ({
 
     return (
         <div
+            data-testid="movie-card"
             className={classNames('movie', {
                 'movie--selected': isSelected,
                 'movie--favorite': isFavorite,
@@ -62,14 +61,23 @@ const Movie = ({
             onClick={() => onClick(id)}
         >
             <div
+                data-testid="movie-poster"
+                className="movie-poster"
                 style={{
                     backgroundImage: `url(${getPoster(poster_path)})`,
                 }}
-                className="movie-poster"
             />
     
-            <IoIosStar className="icon-favorite icon-favorite--on" color="#ffcf40" size={50} />
-            <IoIosStarOutline className="icon-favorite icon-favorite--off" color="white" size={50} />
+            <IoIosStar
+                className="icon-favorite icon-favorite--on"
+                color="#ffcf40"
+                size={50}
+            />
+            <IoIosStarOutline
+                className="icon-favorite icon-favorite--off"
+                color="white"
+                size={50}
+            />
     
             <div className="movie-info">
                 <p className="movie-title">{title}</p>

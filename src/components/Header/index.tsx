@@ -1,6 +1,6 @@
-import './index.scss';
-
 import { BsFillMouseFill } from 'react-icons/bs';
+
+import './index.scss';
 
 const arrowKeyTypes = ['left', 'up', 'down', 'right'];
 
@@ -10,9 +10,15 @@ const arrowKeyTypes = ['left', 'up', 'down', 'right'];
  * @returns {React.ReactElement}
  */
 const Key = ({ type }: { type: string }): React.ReactElement => {
+    const typeClass = `key-${type}`;
+
     return (
-        <div className={`key key-${type}`}>
-            <div className="key-symbol"/>
+        <div
+            className={`key ${typeClass}`}
+            role="presentation"
+            aria-label={typeClass}
+        >
+            <div className="key-symbol" />
         </div>
     );
 };
