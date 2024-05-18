@@ -23,8 +23,7 @@ The task is to implement following requirements:
 Following hints can be useful:
 
 • You can use movies.json for response  
-• To get poster use **base_url**, a **file_size** and a poster_path (example
-*https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg*)  
+• To get poster use **base_url**, a **file_size** and a poster_path (example *https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg*)  
 • You should also set you screen size to 1280x720 via Chrome dev tools to see the proper UI
 
 You must use JavaScript (Vanilla JS, Vue.js, React or any other framework you prefer). The outcome should be runnable locally and it should work in common browsers.
