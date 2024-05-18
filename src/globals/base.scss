@@ -6,8 +6,8 @@ $white: #fff;
 $purple: #9E72C3;
 $pink: #f0f;
 $mint: #0ff;
-$grey: rgba(110, 110, 110);
-$light-grey: rgba(180, 180, 180);
+$grey: #6E6E6E;
+$light-grey: #B4B4B4;
 $gold: #ffcf40;
 
 // Borders
@@ -15,6 +15,7 @@ $border-radius-default: 4px;
 $border-radius-lg: 8px;
 
 $border-default: 1px solid $light-grey;
+$border-darker: 1px solid $grey;
 
 // Effects
 $box-shadow-default: 2px 2px 4px rgba(0,0,0,0.3);

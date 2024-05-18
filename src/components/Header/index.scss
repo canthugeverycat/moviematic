@@ -1,0 +1,131 @@
+@import '../../globals/base.scss';
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    width: 100%;
+    margin: auto auto gutter(5) auto;
+
+    color: $light-grey;
+
+    font-size: 1vw;
+    font-family: 'Open Sans';
+    text-align: center;
+}
+
+.keys-container {
+    gap: gutter(0.5);
+    grid-template-columns: auto auto auto;
+
+    display: grid;
+    justify-content: center;
+
+    margin: auto gutter(2);
+}
+
+.key {
+    position: relative;
+
+    width: 10px;
+    height: 10px;
+
+    border: $border-darker;
+    background: $light-grey;
+}
+
+.key-symbol {
+  width: 0;
+  height: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.key-up {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    .key-symbol {
+        margin-top: 1px;
+
+        border-right: 2px solid transparent;
+        border-left: 2px solid transparent;
+        
+        border-bottom: 4px solid $grey;
+    }
+}
+
+.key-down {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    .key-symbol {
+        margin-top: 4px;
+        
+        border-right: 2px solid transparent;
+        border-left: 2px solid transparent;
+
+        border-top: 4px solid $grey;
+    }
+}
+
+.key-left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    .key-symbol {
+        margin-top: 3px;
+
+        border-top: 2px solid transparent; 
+        border-bottom: 2px solid transparent;
+        
+        border-right: 4px solid $grey;
+    }
+}
+
+.key-right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+
+    .key-symbol {
+        margin-top: 3px;
+
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+
+        border-left: 4px solid $grey;
+    }
+}
+
+.key-enter {
+    width: 10px;
+    height: 20px;
+    margin: auto 7px auto 12px;
+
+    &:before {
+        z-index: 0;
+        position: absolute;
+        right: 100%;
+        bottom: -1px;
+
+        width: 7px;
+        height: 9px;
+
+        border: $border-darker;
+        border-right: none;
+
+        content: "";
+        background: $light-grey;
+    }
+
+    .key-symbol:after {
+        position: absolute;
+        bottom: -2px;
+        left: -3px;
+
+        color: $grey;
+        
+        content: "↵";
+    }
+}

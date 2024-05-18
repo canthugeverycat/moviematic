@@ -1,5 +1,9 @@
 import './index.scss';
 
+/**
+ * A Loader component that will display animated empty grid cards
+ * @returns {React.ReactElement}
+ */
 const Loader = (): React.ReactElement => {
     const delay = 0.2;
     const cards = [...Array(10).keys()];

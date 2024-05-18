@@ -53,8 +53,6 @@ const MovieGrid = (): React.ReactElement => {
         e.preventDefault();
         let val = selected;
 
-        const currentRow = Math.ceil((selected + 1) / columnCount);
-
         switch (e.key) {
             case 'ArrowLeft':
                 val = Math.max(0, selected - 1);
@@ -62,9 +60,10 @@ const MovieGrid = (): React.ReactElement => {
             case 'ArrowRight':
                 val = Math.min(selected + 1, movies.length - 1);
                 break;
-            case 'ArrowDown':
-                val = Math.min(selected + columnCount, movies.length - 1);
+            case 'ArrowDown': {
+                val = selected !== -1 ? Math.min(selected + columnCount, movies.length - 1) : 0;
                 break;
+            }
             case 'ArrowUp':
                 val = Math.max(selected - columnCount, 0);
                 break;
@@ -78,9 +77,10 @@ const MovieGrid = (): React.ReactElement => {
                 return;
         }
 
+        const currentRow = Math.ceil((selected + 1) / columnCount);
         const nextRow = Math.ceil((val + 1) / columnCount);
 
-        if (nextRow !== currentRow) {
+        if (currentRow && nextRow !== currentRow) {
             scrollToRow(nextRow);
         }
 
