@@ -27,4 +27,9 @@
 
     color: $light-grey;
     font-family: 'Bebas Neue';
+
+    span {
+        cursor: pointer;
+        color: $purple;
+    }
 }

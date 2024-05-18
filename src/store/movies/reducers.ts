@@ -13,20 +13,20 @@ export type StateType = {
     data: MovieType[],
     favorites: number[],
     isFetching: boolean,
-    error: string | null,
+    hasError: boolean,
 };
 
 const initialState: StateType = {
     data: [],
     favorites: [],
     isFetching: false,
-    error: null,
+    hasError: false,
 };
 
 export const moviesReducer = (state: StateType = initialState, action: MoviesActionType): StateType => {
     switch (action.type) {
         case FETCH_MOVIES:
-            return { ...state, isFetching: true, error: null };
+            return { ...state, isFetching: true, hasError: false };
         case FETCH_MOVIES_SUCCESS: {
             const { data } = action.payload;
 
@@ -36,8 +36,7 @@ export const moviesReducer = (state: StateType = initialState, action: MoviesAct
             return { ...state, data: sorted, isFetching: false };
         }
         case FETCH_MOVIES_FAILURE: {
-            const { error } = action.payload;
-            return { ...state, error, isFetching: false };
+            return { ...state, hasError: true, isFetching: false };
         }
         case FAVORITE_MOVIE: {
             const { id } = action.payload;

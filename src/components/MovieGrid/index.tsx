@@ -29,6 +29,7 @@ const MovieGrid = (): React.ReactElement => {
     const movies = useSelector((store:RootStateType) => store.movies.data);
     const favorites = useSelector((store:RootStateType) => store.movies.favorites);
     const isFetching = useSelector((store:RootStateType) => store.movies.isFetching);
+    const hasError = useSelector((store:RootStateType) => store.movies.hasError);
     const dispatch = useDispatch();
     
     const [ visibleMovies, setVisibleMovies ] = useState(movies.slice(0, MOVIES_PER_PAGE));
@@ -93,7 +94,7 @@ const MovieGrid = (): React.ReactElement => {
             const data = await apiFetchMovies();
             dispatch(fetchMoviesSuccess(data));
         } catch (e) {
-            dispatch(fetchMoviesFailure('Error'));
+            dispatch(fetchMoviesFailure());
         }
     };
     
@@ -116,7 +117,7 @@ const MovieGrid = (): React.ReactElement => {
     }, [width]);
 
     /**
-     * Loads the next "page" of movies
+     * Loads the next batch of movies
      */
     const loadMoreMovies = () => {
         const nextLimit = Math.min(visibleMovies.length + MOVIES_PER_PAGE, movies.length);
@@ -160,6 +161,11 @@ const MovieGrid = (): React.ReactElement => {
                         onClick={handleFavoriteMovie}
                     />
                 ))}
+
+                {hasError ? (
+                    <p className="grid-end">Whoops! Something went wrong when we tried to get your our list of movies. Please <span onClick={getData}>try again</span>.</p>
+                ) : null}
+
                 {visibleMovies.length ? (
                     <p className="grid-end">Oh... I'm sorry... Is {movies.length} movies not enough for you ?</p>
                 ): null}

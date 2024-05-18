@@ -32,14 +32,10 @@ export const fetchMoviesSuccess = (data: MovieType[]): FetchMoviesSuccessActionT
 // FETCH_MOVIES_FAILURE
 type FetchMoviesFailureActionType = {
     type: typeof FETCH_MOVIES_FAILURE,
-    payload: {
-        error: string,
-    }
 };
 
-export const fetchMoviesFailure = (error: string): FetchMoviesFailureActionType => ({
+export const fetchMoviesFailure = (): FetchMoviesFailureActionType => ({
     type: FETCH_MOVIES_FAILURE,
-    payload: { error },
 });
 
 // FAVORITE_MOVIE
