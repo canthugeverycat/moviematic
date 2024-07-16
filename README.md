@@ -1,40 +1,34 @@
-![United Cloud Logo](https://united.cloud/UnitedCloud/united_cloud_logo_1_.svg)
+# Moviematic
 
-# !Run the project with 'npm start'
+- [✏️ Project Description](#-project-description)
+- [💻 Development Environment](#-development-environment)
+- [📄 Available Scripts](#-available-scripts)
 
-## JavaScript interview task
+## ✏️ Project Description
 
-Hello,
+A user interface of a streaming service for movies and TV shows. It features clean UI, keyboard navigation and favoriting a movie.
 
-Congratulations! Your application for JavaScript position has got our attention. Now, it’s time for coding. We want to see your style.
+## 💻 Development Environment
 
-We want you to build simple **web application that displays movies in grid view**.
+This project was developed with the following environment:
 
-The task is to implement following requirements:
+- **Node** v21.7.3
+- **npm** v10.5.0
+- **Create React App** v5.0.1
 
-[x] Filter duplicated movies from the response  
-[x] Sort movies by imdb rating  
-[x] Render all filtered & sorted movies in grid view  
-[x] Each rendered movie item should display title, poster, release date and inFavorites status  
-[x] Enable keyboard navigation  
-[x] Highlight selected item  
-[x] On Enter key add item to favorites / or remove when it is already in favorites
+## 📄 Available Scripts
 
-Following hints can be useful:
+To start the app run:
 
-• You can use movies.json for response  
-• To get poster use **base_url**, a **file_size** and a poster_path (example *https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg*)  
-• You should also set you screen size to 1280x720 via Chrome dev tools to see the proper UI
+#### `npm install`
 
-You must use JavaScript (Vanilla JS, Vue.js, React or any other framework you prefer). The outcome should be runnable locally and it should work in common browsers.
+To install the required dependencies for the project. Once installed run:
 
-We understand that your time is precious and would not want you to spend more than *5 hours* working on the task over the span of one week. It is all right that assignment is not
-completed. Try to prioritize what is more important to you.
+#### `npm start`
 
-Here are some tips for you what to take care about:
-• Performance  
-• Code readability  
-• Design - we are not looking for pixel-perfect design, but we love attention to details  
-• Commit often, write useful commit messages
+This will start both the app and the express server in development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-After you send us the task, we will carefully review it in a timely manner and might then invite you to an interview, where we can discuss your solution and explore what could be done differently.
+#### `npm test`
+
+After running this command press `a` to run all tests for the app.

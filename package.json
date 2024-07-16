@@ -1,5 +1,5 @@
 {
-  "name": "united-cloud-take-home",
+  "name": "moviematic",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -56,5 +56,8 @@
     "json-server": "^0.17.4",
     "node-sass": "^7.0.3",
     "sass-loader": "^14.2.1"
+  },
+  "engines": {
+    "node": "21.7.3"
   }
 }

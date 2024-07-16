@@ -1,35 +1,35 @@
-@import '../../globals/base.scss';
+@import "../../globals/base.scss";
 
 .grid {
-    flex: 1;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    
-	overflow: scroll;
+  flex: 1;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  overflow: auto;
 }
 
 .grid-scroll {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, $card-width), 1fr));
-    justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, $card-width), 1fr));
+  justify-items: center;
 
-    display: grid;
-    padding-top: gutter(6);
-    padding-left: gutter(15);
-    padding-right: gutter(15);
+  display: grid;
+  padding-top: gutter(6);
+  padding-left: gutter(15);
+  padding-right: gutter(15);
 }
 
 .grid-end {
-    grid-column: 1 / -1;
-    
-    display: block;
-    margin-bottom: gutter(10);
+  grid-column: 1 / -1;
 
-    color: $light-grey;
-    font-family: 'Bebas Neue';
+  display: block;
+  margin-bottom: gutter(10);
 
-    span {
-        cursor: pointer;
-        color: $purple;
-    }
+  color: $light-grey;
+  font-family: "Bebas Neue";
+
+  span {
+    cursor: pointer;
+    color: $purple;
+  }
 }
