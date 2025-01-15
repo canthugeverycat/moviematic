@@ -1,6 +1,6 @@
 # Moviematic
 
-[🟢 Live Demo](https://moviematic-8dabad35206c.herokuapp.com)
+[🟢 Live Demo](https://5q9p6y-3000.csb.app)
 
 - [✏️ Project Description](#-project-description)
 - [💻 Development Environment](#-development-environment)
